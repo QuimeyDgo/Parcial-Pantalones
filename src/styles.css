@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  background-color: #F7F5F0;
+  color: #1B2A41;
+  font-family: Arial, sans-serif;
+}
+
+.main-content {
+  padding: 108px 8% 40px;
+}
+
+:root {
+  /* Fondos */
+  --background-color: #F7F5F0;
+  --background-lighter-color: #FFFFFF;
+  --background-darker-color: #E5E5E5;
+
+  /* Textos */
+  --font-color: #1B2A41;
+  --font-muted-color: #626B78;
+  --font-error-color: #C94C4C;
+  --font-on-accent-color: #FFFFFF;
+
+  /* Identidad visual */
+  --accent-color: #B8860B;
+  --accent-hover-color: #8A6506;
+  --accent-soft-color: #FBF6E9;
+
+  /* Bordes */
+  --border-color: #D2D5DA;
+  --border-strong-color: #B8BDC5;
+
+  /* Estados */
+  --success-color: #286343;
+  --success-background-color: #E4F3E9;
+  --error-background-color: #FFF0F0;
+  --error-border-color: #E9B7B7;
+  --unavailable-color: #8A3D3D;
+  --unavailable-background-color: #FBE8E8;
+
+  /* Efectos */
+  --focus-ring-color: rgb(184 134 11 / 12%);
+  --shadow-color: rgb(27 42 65 / 5%);
+
+  --primary-hover-color: #2D4465;
+
+  --font-body-color: #465364;
+  --font-subtle-color: #7B8490;
+  --danger-hover-color: #A83C3C;
+
+  --border-accent-color: #D3C18E;
+}

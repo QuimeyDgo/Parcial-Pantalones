@@ -1,0 +1,197 @@
+
+<section class="form-page">
+  <header class="page-heading">
+    <p class="eyebrow">INVENTARIO · DENIM</p>
+
+    <h1>{{ pantalon() ? 'Editar pantalón' : 'Agregar pantalón' }}</h1>
+
+    <p>
+      {{ pantalon()
+      ? 'Modificá los datos del modelo seleccionado.'
+      : 'Completá los datos del nuevo modelo para incorporarlo al catálogo.' }}
+    </p>
+  </header>
+
+  <form [formRoot]="pantalonForm" class="form-card">
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="modelName">Nombre del modelo *</label>
+
+        <input
+          id="modelName"
+          type="text"
+          placeholder="Ej. Jeans Clásico 501"
+          [formField]="pantalonForm.modelName"
+        />
+
+        @if (
+          pantalonForm.modelName().touched() &&
+          pantalonForm.modelName().invalid()
+        ) {
+          @for (error of pantalonForm.modelName().errors(); track $index) {
+            <small class="error">{{ error.message }}</small>
+          }
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="salePrice">Precio de venta *</label>
+
+        <div class="price-input">
+          <span>$</span>
+          <input
+            id="salePrice"
+            type="number"
+            step="0.01"
+            placeholder="0.00"
+            [formField]="pantalonForm.salePrice"
+          />
+        </div>
+
+        @if (
+          pantalonForm.salePrice().touched() &&
+          pantalonForm.salePrice().invalid()
+        ) {
+          @for (error of pantalonForm.salePrice().errors(); track $index) {
+            <small class="error">{{ error.message }}</small>
+          }
+        }
+      </div>
+    </div>
+
+    <fieldset class="form-group size-field">
+      <legend>Talle *</legend>
+
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" value="XS" [formField]="pantalonForm.size" />
+          XS
+        </label>
+
+        <label class="radio-option">
+          <input type="radio" value="S" [formField]="pantalonForm.size" />
+          S
+        </label>+
+
+        <label class="radio-option">
+          <input type="radio" value="M" [formField]="pantalonForm.size" />
+          M
+        </label>
+
+        <label class="radio-option">
+          <input type="radio" value="L" [formField]="pantalonForm.size" />
+          L
+        </label>
+
+        <label class="radio-option">
+          <input type="radio" value="XL" [formField]="pantalonForm.size" />
+          XL
+        </label>
+      </div>
+
+      @if (
+        pantalonForm.size().touched() &&
+        pantalonForm.size().invalid()
+      ) {
+        @for (error of pantalonForm.size().errors(); track $index) {
+          <small class="error">{{ error.message }}</small>
+        }
+      }
+    </fieldset>
+
+    <div class="form-group">
+      <label for="cut">Corte *</label>
+
+      <select id="cut" [formField]="pantalonForm.cut">
+        <option value="">Seleccioná un corte</option>
+        <option value="Recto">Recto</option>
+        <option value="Slim">Slim</option>
+        <option value="Oxford">Oxford</option>
+        <option value="Skinny">Skinny</option>
+        <option value="Cargo">Cargo</option>
+        <option value="Jogger">Jogger</option>
+      </select>
+
+      @if (
+        pantalonForm.cut().touched() &&
+        pantalonForm.cut().invalid()
+      ) {
+        @for (error of pantalonForm.cut().errors(); track $index) {
+          <small class="error">{{ error.message }}</small>
+        }
+      }
+    </div>
+
+    <div class="availability">
+      <label class="checkbox-option">
+        <input
+          type="checkbox"
+          [formField]="pantalonForm.isInStore"
+        />
+        <span>Disponible en tienda</span>
+      </label>
+
+      <small>Marcá esta opción si hay unidades disponibles.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Descripción (opcional)</label>
+
+      <textarea
+        id="notes"
+        rows="4"
+        placeholder="Detalles del material, estilo o características..."
+        [formField]="pantalonForm.notes"
+      ></textarea>
+
+      <div class="character-count">
+        {{ pantalonForm.notes().value().length }} / 200 caracteres
+      </div>
+
+      @if (
+        pantalonForm.notes().touched() &&
+        pantalonForm.notes().invalid()
+      ) {
+        @for (error of pantalonForm.notes().errors(); track $index) {
+          <small class="error">{{ error.message }}</small>
+        }
+      }
+    </div>
+
+    @if (errorMessage()) {
+      <p class="server-error" role="alert">
+        {{ errorMessage() }}
+      </p>
+    }
+
+    <div class="form-actions">
+
+      <button
+        type="button"
+        class="button button-secondary"
+        [disabled]="pantalonForm().submitting()"
+       (click)="limpiarFormulario()"
+      >
+        {{ pantalon() ? 'Restablecer' : 'Limpiar formulario' }}
+      </button>
+
+      <button
+        type="submit"
+        class="button button-primary"
+        [disabled]="
+          pantalonForm().invalid() ||
+          pantalonForm().submitting()
+        "
+      >
+
+        @if (pantalonForm().submitting()) {
+        Guardando...
+        } @else {
+        {{ pantalon() ? 'Guardar cambios' : 'Agregar pantalón' }}
+        }
+      </button>
+    </div>
+
+  </form>
+</section>

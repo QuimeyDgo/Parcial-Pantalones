@@ -1,0 +1,96 @@
+
+<section class="catalog-page">
+  <header class="page-heading">
+    <div>
+      <p class="eyebrow">INVENTARIO · DENIM</p>
+      <h1>Catálogo de pantalones</h1>
+      <p class="subtitle">
+        Explorá los modelos disponibles y consultá sus detalles.
+      </p>
+    </div>
+
+  </header>
+
+<section class="filters" aria-label="Opciones del catálogo">
+
+  <div class="filter-field">
+    <label for="filtroCategoria">Categoría</label>
+
+    <select
+      id="filtroCategoria"
+      [value]="filtroCategoria()"
+      (change)="filtroCategoria.set($any($event.target).value)"
+    >
+      <option value="">Todas las categorías</option>
+      <option value="Recto">Recto</option>
+      <option value="Slim">Slim</option>
+      <option value="Oxford">Oxford</option>
+      <option value="Skinny">Skinny</option>
+      <option value="Cargo">Cargo</option>
+      <option value="Jogger">Jogger</option>
+    </select>
+  </div>
+
+  <div class="filter-field">
+    <label for="ordenPrecio">Ordenar por precio</label>
+
+    <select
+      id="ordenPrecio"
+      [value]="ordenPrecio()"
+      (change)="ordenPrecio.set($any($event.target).value)"
+    >
+      <option value="original">Orden original</option>
+      <option value="asc">Menor a mayor</option>
+      <option value="desc">Mayor a menor</option>
+    </select>
+  </div>
+
+</section>
+
+  @if (errorMessage()) {
+    <div class="message error-message" role="alert">
+      {{ errorMessage() }}
+    </div>
+  } @else {
+    <div class="catalog-summary">
+      <span>Modelos encontrados</span>
+     <strong>{{ pantalonesFiltrados().length }}</strong>
+    </div>
+
+    <div class="product-list">
+      @for (pantalon of pantalonesFiltrados(); track pantalon.id) {
+        <article class="product-row">
+          <div class="product-info">
+            <h2>{{ pantalon.modelName }}</h2>
+
+            <div class="product-metadata">
+              <span class="size">Talle {{ pantalon.size }}</span>
+              <span class="separator">·</span>
+              <span>{{ pantalon.cut }}</span>
+            </div>
+          </div>
+
+          <div class="product-price">
+            <span>Precio de venta</span>
+            <strong>
+              {{ pantalon.salePrice | currency:'USD':'symbol':'1.2-2' }}
+            </strong>
+          </div>
+
+          <button
+            type="button"
+            class="details-button"
+            (click)="verDetalle(pantalon.id)"
+          >
+            Ver más →
+          </button>
+        </article>
+      } @empty {
+         <div class="message empty-message">
+           No se encontraron pantalones con la categoría seleccionada.
+          </div>
+      }
+    </div>
+  }
+
+</section>

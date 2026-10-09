@@ -1,0 +1,248 @@
+
+:host {
+  display: block;
+}
+
+
+
+.detail-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.back-button {
+  margin-bottom: 24px;
+  padding: 8px 0;
+  color: var(--font-color);
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: var(--accent-color);
+}
+
+.detail-heading {
+  margin-bottom: 24px;
+}
+
+.detail-heading h1 {
+  margin: 8px 0 16px;
+  color: var(--font-color);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.eyebrow {
+  color: var(--accent-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+
+.availability-badge {
+  display: inline-block;
+  padding: 7px 12px;
+  color: var(--success-color);
+  background-color: var(--success-background-color);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.availability-badge.unavailable {
+  color: var(--unavailable-color);
+  background-color: var(--unavailable-background-color);
+}
+
+
+
+.detail-card {
+  padding: 32px;
+  background-color: var(--background-lighter-color);
+  border: 1px solid var(--background-darker-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+.price-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--background-darker-color);
+}
+
+.price-section span,
+.detail-label {
+  color: var(--font-muted-color);
+  font-size: 0.85rem;
+}
+
+.price-section strong {
+  color: var(--font-color);
+  font-size: 2rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--background-darker-color);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.detail-item strong {
+  color: var(--font-color);
+  overflow-wrap: anywhere;
+}
+
+
+
+.description-section {
+  padding: 24px 0;
+}
+
+.description-section h2 {
+  margin: 0 0 12px;
+  color: var(--font-color);
+  font-size: 1.1rem;
+}
+
+.description-section p {
+  margin: 0;
+  color: var(--font-body-color);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.description-section .no-description {
+  color: var(--font-subtle-color);
+  font-style: italic;
+}
+
+
+
+.edit-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cancel-edit {
+  align-self: flex-end;
+}
+
+
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--background-darker-color);
+}
+
+.button {
+  padding: 12px 18px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.button-primary {
+  color: var(--font-on-accent-color);
+  background-color: var(--font-color);
+}
+
+.button-primary:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.button-secondary {
+  color: var(--font-color);
+  background-color: var(--background-lighter-color);
+  border-color: var(--border-color);
+}
+
+.button-secondary:hover {
+  background-color: var(--background-color);
+}
+
+.button-danger {
+  color: var(--font-on-accent-color);
+  background-color: var(--font-error-color);
+}
+
+.button-danger:hover {
+  background-color: var(--danger-hover-color);
+}
+
+
+.message,
+.loading-message {
+  padding: 24px;
+  background-color: var(--background-lighter-color);
+  border: 1px solid var(--background-darker-color);
+  border-radius: 10px;
+}
+
+.message h2 {
+  margin-top: 0;
+  color: var(--font-color);
+}
+
+.message p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.error-message {
+  border-color: var(--error-border-color);
+}
+
+.error-message p {
+  color: var(--font-error-color);
+}
+
+.loading-message {
+  color: var(--font-muted-color);
+  text-align: center;
+}
+
+
+
+@media (max-width: 600px) {
+  .detail-card {
+    padding: 20px;
+  }
+
+  .detail-grid {
+    gap: 20px 12px;
+  }
+
+  .detail-actions {
+    flex-direction: column-reverse;
+  }
+  .detail-actions .button,
+  .cancel-edit {
+    width: 100%;
+  }
+  .cancel-edit {
+    align-self: stretch;
+  }
+}

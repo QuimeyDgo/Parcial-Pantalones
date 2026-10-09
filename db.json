@@ -1,0 +1,49 @@
+{
+  "Pantalones": [
+    {
+      "id": "1p2l",
+      "modelName": "Pantalón Chino Delgado",
+      "salePrice": 55.5,
+      "isInStore": true,
+      "size": "M",
+      "cut": "Slim",
+      "notes": "Ideal para oficina o eventos casuales. Disponible en varios colores."
+    },
+    {
+      "id": "k03u",
+      "modelName": "Jogger Deportivo",
+      "salePrice": 45,
+      "isInStore": false,
+      "size": "L",
+      "cut": "Jogger",
+      "notes": "Material sintético con tecnología de secado rápido. Agotado en color negro, solo queda en gris."
+    },
+    {
+      "id": "j84s",
+      "modelName": "Pantalón Cargo Urbano",
+      "salePrice": 65,
+      "isInStore": true,
+      "size": "XL",
+      "cut": "Cargo",
+      "notes": "Estilo baggy con múltiples bolsillos funcionales. Tela resistente, color verde militar."
+    },
+    {
+      "id": "zxk8",
+      "modelName": "Legging Básico Algodón",
+      "salePrice": 29.99,
+      "isInStore": true,
+      "size": "S",
+      "cut": "Skinny",
+      "notes": "Tejido elástico de alta densidad. Comodidad máxima para uso diario."
+    },
+    {
+      "id": "pg35",
+      "modelName": "Pantalón de Vestir Lanilla",
+      "salePrice": 95.75,
+      "isInStore": false,
+      "size": "S",
+      "cut": "Slim",
+      "notes": "Tiro medio. Ideal para ocasiones formales. Requiere limpieza en seco."
+    }
+  ]
+}

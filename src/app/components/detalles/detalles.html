@@ -1,0 +1,147 @@
+
+<section class="detail-page">
+
+  <button
+    type="button"
+    class="back-button"
+    (click)="volverAlCatalogo()"
+  >
+    ← Volver al catálogo
+  </button>
+
+  @if (errorMessage()) {
+    <div class="message error-message" role="alert">
+      <h2>No se pudo completar la operación</h2>
+      <p>{{ errorMessage() }}</p>
+
+      <button
+        type="button"
+        class="button button-primary"
+        (click)="volverAlCatalogo()"
+      >
+        Volver al catálogo
+      </button>
+    </div>
+
+  } @else if (pantalon(); as actual) {
+
+    <header class="detail-heading">
+      <p class="eyebrow">INVENTARIO · DENIM</p>
+      <h1>{{ actual.modelName }}</h1>
+
+      <span
+        class="availability-badge"
+        [class.unavailable]="!actual.isInStore"
+      >
+        {{ actual.isInStore ? 'Disponible en tienda' : 'Sin stock' }}
+      </span>
+    </header>
+
+    @if (editando()) {
+      <section class="edit-panel">
+
+        <app-formulario
+          [pantalon]="actual"
+          (actualizado)="actualizarPantalon($event)"
+        />
+
+        <button
+          type="button"
+          class="button button-secondary cancel-edit"
+          (click)="cancelarEdicion()"
+        >
+          Cancelar edición
+        </button>
+
+      </section>
+
+    } @else {
+
+      <article class="detail-card">
+
+        <div class="price-section">
+          <span>Precio de venta</span>
+
+          <strong>
+            {{ actual.salePrice | currency:'USD':'symbol':'1.2-2' }}
+          </strong>
+        </div>
+
+        <div class="detail-grid">
+
+          <div class="detail-item">
+            <span class="detail-label">Talle</span>
+            <strong>{{ actual.size }}</strong>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Corte</span>
+            <strong>{{ actual.cut }}</strong>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Identificador</span>
+            <strong>{{ actual.id }}</strong>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Disponibilidad</span>
+            <strong>
+              {{ actual.isInStore ? 'Disponible' : 'No disponible' }}
+            </strong>
+          </div>
+
+        </div>
+
+        <div class="description-section">
+          <h2>Descripción</h2>
+
+          @if (actual.notes) {
+            <p>{{ actual.notes }}</p>
+          } @else {
+            <p class="no-description">
+              Este modelo no tiene una descripción registrada.
+            </p>
+          }
+        </div>
+
+        <footer class="detail-actions">
+
+          <button
+            type="button"
+            class="button button-secondary"
+            (click)="volverAlCatalogo()"
+          >
+            Volver
+          </button>
+
+          <button
+            type="button"
+            class="button button-primary"
+            (click)="habilitarEdicion()"
+          >
+            Editar pantalón
+          </button>
+
+          <button
+            type="button"
+            class="button button-danger"
+            (click)="eliminarPantalon()"
+          >
+            Eliminar pantalón
+          </button>
+
+        </footer>
+
+      </article>
+    }
+
+  } @else {
+
+    <div class="loading-message">
+      Cargando información del pantalón...
+    </div>
+
+  }
+
+</section>
